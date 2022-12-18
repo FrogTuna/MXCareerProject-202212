@@ -107,18 +107,18 @@ function validParentheses(array){
         for(var i = 0; i < array.length; i++){
 
             //push element in the stack
-            if(stack.length == 0){
+            if(stack[i] == "(" || stack[i] == "{" || stack[i] == "["){
                 stack.push(array[i])
             }
             //compare it with next element. if succeeds, then pop it, otherwise return false
             else{
-                if (stack[0] == "(" && array[i] == ")"){
+                if (stack[stack.length - 1] == "(" && array[i] == ")"){
                     stack.pop()
                 }
-                else if (stack[0] == "{" && array[i] == "}"){
+                else if (stack[stack.length - 1] == "{" && array[i] == "}"){
                     stack.pop()
                 }
-                else if (stack[0] == "[" && array[i] == "]"){
+                else if (stack[stack.length - 1] == "[" && array[i] == "]"){
                     stack.pop()
                 }
                 else{
