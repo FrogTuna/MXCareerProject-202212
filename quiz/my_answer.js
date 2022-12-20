@@ -37,6 +37,32 @@ function daffodils(numbers){
     }
 }
 
+function daffodilss(nums){
+
+    var store = nums
+    var temp = 0
+    var i = 0
+    while(i <= 3){
+        
+        mod = nums%10
+        temp = temp + mod ** 3
+        nums = Math.floor(nums/10)
+        i++
+        
+        if(i == 3){
+            if(temp == store){
+                console.log(true)
+                return true
+            }
+            else{        
+                console.log(false)
+                return false
+            }         
+        }
+    }  
+}
+daffodilss(153)
+
 //daffodils(153)
 //daffodils(152)
 //daffodils(15322)
@@ -47,34 +73,34 @@ function daffodils(numbers){
 // Q2
 function majorityElement(array){
 
-    //hashmap
-    let myHashMap = new Map()
-    for(var i = 0; i < array.length; i++){
-        if(myHashMap.has(array[i])){
-             myHashMap.set(array[i], myHashMap.get(array[i])+1)       
-        }
-        else{
-            myHashMap.set(array[i],1)
-        }
-    }
-   //console.log(myHashMap)
+   //创建哈希表
+   let myHashMap = new Map()
 
-   //count the occured number of each digit 
-   let countArray = []
-   myHashMap.forEach((key, value) => {
-        countArray.push(key)
-   })
+   //把给定数组存入哈希表以及每个元素出现的次数也一并存入
+   for(var i = 0; i < array.length; i++){
+       if(myHashMap.has(array[i])){
+            myHashMap.set(array[i], myHashMap.get(array[i])+1)       
+       }
+       else{
+           myHashMap.set(array[i],1)
+       }
+   }
+  //console.log(myHashMap)
 
-   //sort
-   let sortCountArray = countArray.sort()
+  //创建数组
+  let countArray = []
 
-   //reverse it and get the first element(0) -> the corresponding key of the first element will be majority element
-   let newCountArray = sortCountArray.reverse()
-   //console.log(newCountArray)
-   //console.log(getByValue(myHashMap, newCountArray[0]))
+  //把哈希表中的每个元素的次数统计倒入数组中
+  myHashMap.forEach((key, value) => {
+       countArray.push(key)
+  })
 
+  //把数组按照倒叙的方式排序 
+  let sortCountArray = countArray.sort(function(a, b){return b-a})
 
-   return getByValue(myHashMap, newCountArray[0])
+  //回传倒数数组第一个就是结果
+  return getByValue(myHashMap, sortCountArray[0])
+
 }
 
 //get its key when i only know the value in hashmap
@@ -157,36 +183,21 @@ function validParentheses(array){
 // Q4
 function LargestNumber(array){
 
-    //split into two diff arrays
-    let singleArray = []
-    let twoLeastArray = []
+    array.sort((a,b) =>{
 
-    for(let i = 0; i < array.length; i++){
-        console.log(array[i])
-        
-        //array less than 10
-        if(array[i] < 10){
-            singleArray.push(array[i])
+        var strA = a.toString() + b.toString()
+        var strB = b.toString() + a.toString()
+
+        if(strA > strB){
+            return -1
         }
-        //array more than 10
         else{
-            twoLeastArray.push(array[i])
+            return 1
         }
-    }
-    
-    //sort and reverse
-    let sortSingleArray = singleArray.sort()
-    let reverseSingleArray = sortSingleArray.reverse()
-    let sorttwoLeastArray = twoLeastArray.sort()
-    let reversetwoLeastArray = sorttwoLeastArray.reverse()
-    //console.log(reverseSingleArray.concat())
-    //console.log(reversetwoLeastArray)
-    
-    
-    //concat two array
-    let combineArray = reverseSingleArray.concat(reversetwoLeastArray)
-    //console.log(Number(combineArray.join("")))
-    return Number(combineArray.join(""))
+    })
+
+    if(array[0] == 1){return "0"}
+    return array.join("")
     
 }
 //LargestNumber([2,5,7,10,11])
