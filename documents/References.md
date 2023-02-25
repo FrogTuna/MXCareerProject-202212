@@ -100,12 +100,14 @@
 
 * AVL树：https://blog.csdn.net/bjweimengshu/article/details/106798509
 * 红黑树：https://zhuanlan.zhihu.com/p/31805309
+* 2-3树：https://zhuanlan.zhihu.com/p/92394224
 * B树：https://www.jianshu.com/p/8b653423c586
 * B+树：https://www.cxyxiaowu.com/3726.html
 
 ## 数据库
 
 * 数据库总结：https://github.com/CyC2018/CS-Notes#floppy_disk-%E6%95%B0%E6%8D%AE%E5%BA%93
+* 索引：https://github.com/CyC2018/CS-Notes/blob/master/notes/MySQL.md
 * 数据库面试常见题：https://www.javazhiyin.com/51483.html
 * SQL练习：http://xuesql.cn/lesson/select_queries_with_constraints_pt_2
 * 为什么SELECT * 效率低：https://zhuanlan.zhihu.com/p/149981715
